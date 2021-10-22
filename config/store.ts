@@ -4,7 +4,7 @@ import {
 import HomeReducer from '../reducers/HomeReducer';
 import { Action, configureStore, getDefaultMiddleware, EnhancedStore } from '@reduxjs/toolkit';
 import { ThunkAction } from 'redux-thunk';
-import { MakeStore, createWrapper } from "next-redux-wrapper";
+import { createWrapper } from "next-redux-wrapper";
 
 const rootReducer = combineReducers({
   home: HomeReducer
@@ -26,7 +26,7 @@ const store = configureStore({
 });
 
 const setupStore = (context: any): EnhancedStore => store;
-const makeStore: MakeStore = (context) => setupStore(context);
+const makeStore = (context) => setupStore(context);
 
 export const wrapper = createWrapper(makeStore, {
   debug: devTools,
